@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "【我们都对】团队鼎力支持开发：大话西游后台管理系统api接口文档",
+    "version": "1.0.0",
+    "title": "Swagger backstage",
+    "contact": {
+      "email": "838667990@qq.com"
+    }
+  },
+  "host": "localhost:3300",
+  "tags": [
+    {
+      "name": "user",
+      "description": "后台用户模块"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/backstage/user/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "后台管理员登陆api",
+        "description": "大话西游后台管理商城管理员登陆接口",
+        "operationId": "createUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "登陆api请求参数",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "操作成功"
+          }
+        }
+      }
+    }
+  }
+}
