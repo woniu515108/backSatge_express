@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
+    "nodestart": "node app.js",
+    "backstageapi": "apidoc -i ./routers/backstage_routers -o ./apidoc/backstage",
+    "webapi": "apidoc -i ./routers/web_routers -o ./apidoc/web",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

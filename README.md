@@ -15,8 +15,14 @@
 
     nodemon   
         描述：热启动(代码保存即自动重启服务)
-        命令：npm install nodemon -g
+        安装命令：npm install nodemon -g
         使用说明：启动项目入口文件不在使用 node xxx.js 而是使用 nodemon xxx.js
+
+    apidoc
+        描述：根据注释生成api接口文档
+        官网：http://apidocjs.com
+        安装命令：npm install apidoc -g
+        使用说明：
     
 
 ### 3. 后台项目启动

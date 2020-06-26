@@ -23,7 +23,10 @@ app.use(bodyPaser.json());
 
 
 
+
+
 app.use('/swagger/backstage', express.static('public'));
+app.use('/apidoc/backstage', express.static('apidoc/backstage'));
 
 app.use('/', function (req, res) {
     res.writeHead(200, {
