@@ -7,6 +7,7 @@
     "start": "nodemon app.js",
     "nodestart": "node app.js",
     "backstageapi": "apidoc -i ./routers/backstage_routers -o ./apidoc/backstage",
+    "commonapi": "apidoc -i ./routers/common_routers -o ./apidoc/common",
     "webapi": "apidoc -i ./routers/web_routers -o ./apidoc/web"
   },
   "keywords": [],

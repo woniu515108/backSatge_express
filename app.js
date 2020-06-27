@@ -26,8 +26,12 @@ app.use(bodyPaser.json());
 
 
 
-// swagger配置的后台接口
-app.use('/swagger/backstage', express.static('public'));
+// // swagger配置的后台接口
+// app.use('/swagger/backstage', express.static('public'));
+// apidoc配置的后台接口
+app.use('/apidoc/common', express.static('apidoc/common'));
+// apidoc配置的后台接口
+app.use('/apidoc/web', express.static('apidoc/web'));
 // apidoc配置的后台接口
 app.use('/apidoc/backstage', express.static('apidoc/backstage'));
 
@@ -70,7 +74,9 @@ app.listen("3300",()=>{
        "                                                     \n" +
        "....................佛祖保佑 ,永无BUG.................\n" +
        ".......... 该项目由【我们都对】团队鼎力支持 ...........\n" +
-       "............服务启动 http://localhost:3300............\n" +
-       "...api文档：http://localhost:3300/swagger/backstage/...."
+       "............服务启动 http://localhost:3300........... \n" +
+       "  api文档(公共)：http://localhost:3300/apidoc/common \n" +
+       "  api文档(前台)：http://localhost:3300/apidoc/web    \n" +
+       "  api文档(后端)：http://localhost:3300/apidoc/backstage "
     );
 })
