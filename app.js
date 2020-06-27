@@ -10,6 +10,8 @@ const bodyPaser = require('body-parser');
  * @description: 引入一级路由
  */
 // 前台接口总路由
+const commonRouter = require('./routers/common_routers');
+// 前台接口总路由
 const webRouter = require('./routers/web_routers');
 // 后台接口总路由
 const backStageRouter = require('./routers/backstage_routers');
@@ -24,21 +26,23 @@ app.use(bodyPaser.json());
 
 
 
-
+// swagger配置的后台接口
 app.use('/swagger/backstage', express.static('public'));
+// apidoc配置的后台接口
 app.use('/apidoc/backstage', express.static('apidoc/backstage'));
 
-app.use('/', function (req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/html; charset=utf-8'
-    });
-    res.write('<h3>后台api文档：<a href="http://localhost:3300/swagger/backstage/">http://localhost:3300/swagger/backstage/</a><h3>');
-    res.end();
-});
+// app.use('/', function (req, res) {
+//     res.writeHead(200, {
+//         'Content-Type': 'text/html; charset=utf-8'
+//     });
+//     res.write('<h3>后台api文档：<a href="http://localhost:3300/swagger/backstage/">http://localhost:3300/swagger/backstage/</a><h3>');
+//     res.end();
+// });
 
 
 
 // 一级路由挂载
+app.use('/common', commonRouter);
 app.use('/web', webRouter);
 app.use('/backstage', backStageRouter);
 

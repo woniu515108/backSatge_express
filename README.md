@@ -45,6 +45,8 @@
 
         使用npm本地导入连接mysql数据库中间件依赖
 
+    - npm install nodemailer --save
+
 ### 4. 后台数据库搭建
 
     描述：使用xammp自带的MariDB数据库，创建 dahuamall 数据库 并 创建后台管理员表
