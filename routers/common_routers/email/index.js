@@ -2,6 +2,8 @@ const express = require('express');
 const emailRouter = express.Router();
 
 // const pool = require('./../../../db/connent');
+const emailPool = require('./../../../db/common/emails_pool');
+
 const Email = require('./../../../utils/email');
 
 /**
@@ -50,12 +52,12 @@ emailRouter.get('/getCode', (req, res) => {
     if ( !emailAddress ){
         return res.send({
             code: 401,
-            msg: '缺少邮箱'
+            msg: '参数缺失！邮箱地址'
         })
     }else if( !/^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/.test(emailAddress) ){
         return res.send({
             code: 402,
-            msg: '邮箱格式错误'
+            msg: '校验失败！邮箱格式错误'
         })
     }
 
@@ -63,11 +65,25 @@ emailRouter.get('/getCode', (req, res) => {
     let fromTitle = '大话西游商城修改密码校验码';
     let code      = parseInt(Math.random()*10000); // 随机验证码
 
+    // 标识码：用来存库校验对应的code
+    let IDCode = (new Date()).getTime() + parseInt(Math.random()*9999);
+    
+
     Email.send(fromTip, fromTitle, emailAddress, code)
-        .then(()=>{
+        .then(data=>{
+
+            let createTime = new Date().getTime();
+
+            return emailPool.insertEmailCheck(IDCode, code, createTime);
+            
+        })
+        .then(data=>{
             return res.send({
                 code: 200,
-                msg: '验证码发送成功'
+                msg: '验证码发送成功',
+                data:{
+                    IDCode
+                }
             })
         })
         .catch(err=>{

@@ -3,6 +3,8 @@
 const express = require('express');
 const app = express();
 
+const path = require('path');
+
 const bodyPaser = require('body-parser');
 
 
@@ -26,8 +28,11 @@ app.use(bodyPaser.json());
 
 
 
+/**
+ * 静态资源服务：接口文档的配置访问
+*/
 // // swagger配置的后台接口
-// app.use('/swagger/backstage', express.static('public'));
+app.use('/swagger/backstage', express.static('public'));
 // apidoc配置的后台接口
 app.use('/apidoc/common', express.static('apidoc/common'));
 // apidoc配置的后台接口
@@ -35,13 +40,11 @@ app.use('/apidoc/web', express.static('apidoc/web'));
 // apidoc配置的后台接口
 app.use('/apidoc/backstage', express.static('apidoc/backstage'));
 
-// app.use('/', function (req, res) {
-//     res.writeHead(200, {
-//         'Content-Type': 'text/html; charset=utf-8'
-//     });
-//     res.write('<h3>后台api文档：<a href="http://localhost:3300/swagger/backstage/">http://localhost:3300/swagger/backstage/</a><h3>');
-//     res.end();
-// });
+
+/**
+ * 静态资源服务：上传资源的访问
+ * */ 
+app.use('/public',express.static(path.join(__dirname,'./uploads')))
 
 
 

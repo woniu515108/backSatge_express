@@ -16,8 +16,6 @@ let transporter = nodemailer.createTransport({
 });
 
 
-
-
 /**
  * @description: 封装email发送方法
  * @param {String} fromTip          接收方 收件提示
@@ -46,7 +44,6 @@ function send(fromTip, fromTitle, emailAddress, code){
          * @Date Changed: 2020-06-27
          */
         transporter.sendMail(mailInfo, (err, result) => {
-            console.log(err);
             if(err){
                 reject(err)
             }else{

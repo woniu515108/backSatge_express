@@ -4,27 +4,6 @@ const userRouters = express.Router();
 
 const pool = require('./../../../db/connent');
 
-/**
- * @api {get} /backstage/user/ceshi 后台测试接口
- * @apiName 测试api
- * @apiGroup 测试
- *
- * @apiSuccess {Number}  code   请求状态码200|400
- * @apiSuccess {String}  msg    响应信息
- * 
- * @apiSuccessExample {json} Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *       "code": 200,
- *       "msg": "后台接口：----用户模块测试 ok"
- *     }
- */
-userRouters.get('/ceshi', (req, res) => {
-    res.send({
-        code: 200,
-        msg: "后台接口：----用户模块测试 ok"
-    });
-})
 
 /**
  * @api {post} /backstage/user/login 登陆
@@ -140,9 +119,6 @@ userRouters.post('/login', (req, res) => {
 
     // res.send("用户模块 测试接口--------");
 })
-
-
-
 
 
 
